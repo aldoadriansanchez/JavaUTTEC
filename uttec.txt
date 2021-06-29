@@ -1,0 +1,56 @@
+create database uttec;
+use uttec;
+
+create table profesor(id_pro int(10)primary key auto_increment,nombre_pro varchar(30),ap_pat varchar(30),ap_mat 
+varchar(30),usuario varchar(30)not null,password varchar(30)not null,tipo_user varchar(30)not null)engine=innodb;
+
+insert into profesor values(null,"victor","ramirez","infante","vicpapi","123","Profesor");
+insert into profesor values(null,"juan","rojas","sola","juan1","123","Profesor");
+insert into profesor values(null,"francisco","tolentino","juares","fran1","123","Profesor");
+insert into profesor values(null,"andrea","ramirez","infante","andy5","123","Profesor");
+
+create table Administrador(id_adm int(10)primary key auto_increment,nombre_adm varchar(30),ap_pat varchar(30),ap_mat 
+varchar(30),usuario varchar(30)not null,password varchar(30)not null,tipo_user varchar(30)not null)engine=innodb;
+
+insert into Administrador values(null,"victor","ramirez","infante","vicpapi","123","Profesor");
+insert into Administrador values(null,"juan","rojas","sola","juan1","123","Profesor");
+insert into Administrador values(null,"francisco","tolentino","juares","fran1","123","Profesor");
+insert into Administrador values(null,"andrea","ramirez","infante","andy5","123","Profesor");
+
+create table Alumno(id_alu int(10)primary key auto_increment,nombre_alu varchar(30),ap_pat varchar(30),ap_mat 
+varchar(30),usuario varchar(30)not null,password varchar(30)not null,tipo_user varchar(30)not null)engine=innodb;
+
+insert into Alumno values(null,"victor","ramirez","infante","vicpapi","123","Profesor");
+insert into Alumno values(null,"juan","rojas","sola","juan1","123","Profesor");
+insert into Alumno values(null,"francisco","tolentino","juares","fran1","123","Profesor");
+insert into Alumno values(null,"andrea","ramirez","infante","andy5","123","Profesor");
+
+create table Materias(id_mat int(10)primary key auto_increment,materia varchar(40),id_prof int(10))engine=innodb;
+
+insert into Materias values(null,"matematicas",null);
+insert into Materias values(null,"espanol",null);
+insert into Materias values(null,"ingles",null);
+insert into Materias values(null,"formacion",null);
+insert into Materias values(null,"aplicaciones",null);
+
+create table Academias(id_aca int(10)primary key auto_increment,academia varchar(20))engine=innodb;
+
+insert into Academias values(null,"CCPM");
+insert into Academias values(null,"COMPUTRAINING");
+insert into Academias values(null,"ECCO");
+insert into Academias values(null,"EDUBYTE");
+insert into Academias values(null,"UGL");
+
+create table Relacion(id_rel int(10)primary key auto_increment,
+materia varchar(30),academia varchar(30),profesor varchar(50));
+
+insert into relacion values(null,"pppp","jjjjj","kkkkk");
+update Materias set id_prof=30 where materia="matematicas";
+
+
+
+
+
+
+
+

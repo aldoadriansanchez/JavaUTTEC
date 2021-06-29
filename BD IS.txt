@@ -1,0 +1,113 @@
+create database sistema;
+use sistema;
+
+create table profesor(id_profesor int(10) primary key auto_increment,
+nombre varchar(30)not null,ap_pat varchar(30)not null,ap_mat varchar(30)not null,
+usuarario varchar(30)not null,contrasena varchar(30)not null,tipo enum('administrador','maestro'))Engine=innodb;
+
+create table academia(id_academia int (10)primary key auto_increment,
+nombre varchar(30)not null)Engine=Innodb;
+
+create table materia(id_materia int(10)primary key auto_increment,
+nombre varchar(30)not null,id_academia int(5),foreign key (id_academia) references academia (id_academia)on delete cascade on update cascade)Engine=innodb;
+
+create table imparte(id_imparte int (10)primary key auto_increment,
+id_profesor int(10),foreign key (id_profesor) references profesor (Id_profesor)on delete cascade on update cascade,
+id_materia int(10),foreign key (id_materia) references materia (Id_materia)on delete cascade on update cascade)Engine=innodb;
+
+create table pregunta(id_pregunta int(10) primary key auto_increment,
+pregunta varchar(50)not null,
+id_materia int(10),foreign key (id_materia) references materia (Id_materia)on delete cascade on update cascade)engine=Innodb;
+
+create table respuesta(id_respuesta int(10)primary key auto_increment,
+tipo enum('correcta','incorrecta')not null,descripcion varchar(30)not null,
+id_pregunta int(10),foreign key (id_pregunta) references pregunta(id_pregunta)on delete cascade on update cascade)Engine=innodb;
+
+create table examen(id_examen int(10) primary key auto_increment,id_materia int(10),foreign key(id_materia)references materia(id_materia)
+on delete cascade on update cascade,id_profesor int(10),foreign key (id_profesor) references profesor (Id_profesor)
+on delete cascade on update cascade,
+num_preguntas int(10)not null,tiempo TIME not null,codigo int(10)not null)engine=Innodb;
+
+create table tiene(id_tiene int(10) primary key auto_increment,
+id_pregunta int(10),foreign key (id_pregunta) references pregunta(id_pregunta)on delete cascade on update cascade,
+id_examen int(10),foreign key (id_examen) references examen(id_examen)on delete cascade on update cascade)Engine=Innodb;
+
+create table alumno(id_alumno int(10) primary key auto_increment,
+nombre varchar(30)not null,ap_pat varchar(30)not null,ap_mat varchar(30)not null,
+usuarario varchar(30)not null,contrasena varchar(30)not null)Engine=Innodb;
+
+create table realiza(id_realiza int(10) primary key auto_increment,
+id_examen int(10),foreign key (id_examen) references examen(id_examen)on delete cascade on update cascade,
+id_alumno int(10),foreign key (id_alumno) references alumno(id_alumno)on delete cascade on update cascade,calificacion varchar(30))Engine=Innodb;
+
+create table Administrador(id_adm int(10)primary key auto_increment,nombre_adm varchar(30),ap_pat varchar(30),ap_mat 
+varchar(30),usuario varchar(30)not null,password varchar(30)not null,tipo_user varchar(30)not null)engine=innodb;
+
+insert into profesor values(null,"gabriela","jimenes","enciso","gaby@gmail.com","123456","maestro");
+insert into profesor values(null,"maria","velazquez","moreno","mary@gmail.com","123456","maestro");
+insert into profesor values(null,"lorena","ramirez","campoy","campoy@gmail.com","123456","maestro");
+insert into profesor values(null,"roland","walther","hardt","roland@gmail.com","123456","maestro");
+insert into profesor values(null,"carlos","perez","espino","charly@gmail.com","123456","maestro");
+insert into profesor values(null,"alfonso","bendaña","castillo","bendaña@gmail.com","123456","maestro");
+insert into profesor values(null,"freddy","lopez","lopez","freddy@gmail.com","123456","maestro");
+insert into profesor values(null,"irene","leon","leon","irene@gmail.com","123456","maestro");
+insert into profesor values(null,"juan","huesca","zarate","zarate@gmail.com","123456","administrador");
+insert into profesor values(null,"balam","castillo","paramo","balam@gmail.com","123456","administrador");
+
+insert into academia values(null,"programacion");
+insert into academia values(null,"base de datos");
+insert into academia values(null,"ingles");
+insert into academia values(null,"redes");
+insert into academia values(null,"sistemas");
+
+
+
+
+insert into Administrador values(null,"victor","ramirez","infante","vicpapi","123","Profesor");
+insert into Administrador values(null,"juan","rojas","sola","juan1","123","Profesor");
+insert into Administrador values(null,"francisco","tolentino","juares","fran1","123","Profesor");
+insert into Administrador values(null,"andrea","ramirez","infante","andy5","123","Profesor");
+
+
+
+
+
+
+insert into imparte values(null,2,1);
+
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+nueva consulta
+select  p.pregunta from pregunta p inner join materia m on p.id_materia=m.id_materia where nombre="matematicas";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+select nombre from materia inner join imparte on
+materia.id_materia=imparte.id_materia where id_profesor
+=5;
+select id_pregunta,pregunta,
+(select descripcion from respuesta where id_respuesta=1)as respuesta1,
+(select descripcion from respuesta where id_respuesta=2)as respuesta2,
+(select descripcion from respuesta where id_respuesta=3)as respuesta3 
+from pregunta where id_pregunta=1;
